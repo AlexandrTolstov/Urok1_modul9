@@ -1,11 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
-
 #include <iostream>
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
 #include <Windows.h>
 #include <time.h>
+#include <cmath>
 
 using namespace std;
 
@@ -23,7 +23,76 @@ void main() {
 
 	if (N1 == 1)
 	{
-		
+		int *a = NULL;
+		int *b = NULL;
+		int *c = NULL;
+		int Str = 0;
+		int Col = 0;
+
+		srand(time(0));
+
+		printf("Введите количесво строк массива Str = ");
+		scanf("%d", &Str);
+		printf("Введите количесво столбцов массива Col = ");
+		scanf("%d", &Col);
+
+		printf("Str = %d\n", Str);
+		printf("Col = %d\n", Col);
+		a = (int *)malloc((Str*Col) * sizeof(int));
+		b = (int *)malloc((Col) * sizeof(int));
+		c = (int *)malloc((Str) * sizeof(int));
+
+		if (a == NULL)
+		{
+			printf("Память не выделена");
+			exit(EXIT_FAILURE);
+		}
+		else
+		{
+			for (int i = 0; i < Str; i++)
+			{
+				for (int j = 0; j < Col; j++)
+				{
+					*(a + i*Str + j) = -50 + rand() % (50 + 50);
+					printf("%d\t", *(a + i*Str + j));
+				}
+				printf("\n");
+			}
+
+			printf("\n");
+			printf("Наибольший по модулю из столбца\n");
+			int MaxMod = 0;
+			for (int i = 0; i < Col; i++)
+			{
+				for (int j = 0; j < Str; j++)
+				{
+					if (abs(*(a + i + j*Str)) > abs(MaxMod))
+						MaxMod = *(a + i+ j*Str);
+				}
+
+				*(b + i) = MaxMod;
+				printf("%d\t", *(b + i));
+				MaxMod = 0;
+			}
+			printf("\n");
+
+			printf("Наибольший по модулю из строки\n");
+			MaxMod = 0;
+
+			for (int i = 0; i < Str; i++)
+			{
+				for (int j = 0; j < Col; j++)
+				{
+					if (abs(*(a + i*Str + j)) > abs(MaxMod))
+						MaxMod = *(a + i*Str + j);
+				}
+
+				*(b + i) = MaxMod;
+				printf("%d\n", *(b + i));
+				MaxMod = 0;
+			}
+			printf("\n");
+		}
 	}
 	else if (N1 == 2)
 	{
@@ -85,58 +154,7 @@ void main() {
 	}
 	else if (N1 == 14)
 	{
-		/*a.Сформировать одномерный массив, каждый элемент которого равен сумме четных положительных
-		элементов соответствующего столбца двумерного массива*/
-
-		int *a = NULL;
-		int *b = NULL;
-		int Str = 0;
-		int Col = 0;
-
-		srand(time(0));
-
-		printf("Введите количесво строк массива Str = ");
-		scanf("%d", &Str);
-		printf("Введите количесво столбцов массива Col = ");
-		scanf("%d", &Col);
-
-		printf("Str = %d\n", Str);
-		printf("Str = %d\n", Col);
-		a = (int *)malloc((Str*Col) * sizeof(int));
-		b = (int *)malloc((Col) * sizeof(int));
-
-		if (a == NULL)
-		{
-			printf("Память не выделена");
-			exit(EXIT_FAILURE);
-		}
-		else
-		{
-			for (int i = 0; i < Col; i++)
-			{
-				for (int j = 0; j < Str; j++)
-				{
-					*(a + i*Col + j) = -20 + rand() % (50 + 20);
-					printf("%d\t", *(a + i*Col + j));
-				}
-				printf("\n");
-			}
-
-			printf("\n");
-			int Sum = 0;
-			for (int i = 0; i < Col; i++)
-			{
-				for (int j = 0; j < Str; j++)
-				{
-					if (*(a + i*Col + j) > 0 && *(a + i*Col + j) % 2 == 0)
-						Sum += *(a + i*Col + j);
-				}
-
-				*(b + i) = Sum;
-				printf("%d\n", *(b + i));
-				Sum = 0;
-			}
-		}
+		
 	}
 	system("pause");
 }
