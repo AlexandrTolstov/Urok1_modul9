@@ -7,6 +7,8 @@
 #include <Windows.h>
 #include <time.h>
 
+using namespace std;
+
 
 void main() {
 
@@ -98,10 +100,12 @@ void main() {
 		printf("Введите количесво столбцов массива Col = ");
 		scanf("%d", &Col);
 
+		printf("Str = %d\n", Str);
+		printf("Str = %d\n", Col);
 		a = (int *)malloc((Str*Col) * sizeof(int));
 		b = (int *)malloc((Col) * sizeof(int));
 
-		if (a == NULL || b == NULL)
+		if (a == NULL)
 		{
 			printf("Память не выделена");
 			exit(EXIT_FAILURE);
