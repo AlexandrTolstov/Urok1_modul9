@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <iostream>
 using namespace std;
 
 void GenMass(int *mass, int Razm) {
@@ -77,6 +78,60 @@ void GenMassTwoDimDouble(double **mass, int Str, int Col, int Min, int Max) {
 		cout << endl;
 	}
 	cout << endl;
+}
+
+/*Генерация двумерного массива череза malloc*/
+void GenMassTwoDimMalloc(int *&mass, int *Str, int *Col, int Min, int Max)
+{
+	srand(time(0));
+	printf("Введите количесво строк массива Str = ");
+	scanf("%d", &*Str);
+	printf("Введите количесво столбцов массива Col = ");
+	scanf("%d", &*Col);
+
+	mass = (int *)malloc(((*Str)*(*Col)) * sizeof(int));
+
+	if (mass == NULL)
+	{
+		printf("Память не выделена");
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		for (int i = 0; i < *Str; i++)
+		{
+			for (int j = 0; j < *Col; j++)
+			{
+				*(mass + i*(*Col) + j) = Min + rand() % (Max - Min);
+				printf("%d\t", *(mass + i*(*Col) + j));
+			}
+			printf("\n");
+		}
+	}
+}
+
+/*Генерация одномерные массива череза malloc*/
+void GenMassMalloc(int *&mass, int *N, int Min, int Max)
+{
+	srand(time(0));
+	printf("Введите количество элементов массива N = ");
+	scanf("%d", &*N);
+
+	mass = (int *)malloc((*N) * sizeof(int));
+
+	if (mass == NULL)
+	{
+		printf("Память не выделена");
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		for (int i = 0; i < *N; i++)
+		{
+			*(mass + i) = Min + rand() % (Max - Min);
+			printf("%d\t", *(mass + i));
+		}
+	}
 }
 
 /*Сумма индексов максимального элемента матрицы*/
