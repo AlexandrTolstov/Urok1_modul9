@@ -166,7 +166,7 @@ int SredArMass(int **mass, int Str, int Col)
 {
 	int Sum = 0;
 	int SredAr = 0;
-	
+
 	for (int i = 0; i < Str; i++)
 	{
 		for (int j = 0; j < Col; j++)

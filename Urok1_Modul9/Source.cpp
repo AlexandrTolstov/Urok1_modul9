@@ -299,7 +299,7 @@ void main() {
 	{
 		int *a = NULL;
 		printf("Введите массив чисел\n");
-		
+
 		int Num;
 		int i = 0;
 		char c;
@@ -325,7 +325,7 @@ void main() {
 		for (int j = 0; j < i; j++)
 		{
 			if (*(a + j) % 2 == 0)
-			Summ += *(a + j);
+				Summ += *(a + j);
 		}
 		printf("Summ = %d\n", Summ);
 		free(a);
@@ -372,7 +372,7 @@ void main() {
 			for (int i = 0; i < N; i++)
 			{
 				if (abs(*(mass + i)) < 7)
-					Proiz*= *(mass + i);
+					Proiz *= *(mass + i);
 			}
 			printf("\nПроизведение элементов, модуль которых меньше 7\n");
 			printf("N = %d\n", Proiz);
@@ -400,13 +400,13 @@ void main() {
 				z++;
 			w++;
 			j++;
-			
+
 		} while (z != 2 && j < N);
 		printf("\nИндекс второго положительного элемента i = %d \n", w);
 
 		free(mass);
 	}
-	else if(N1 == 9)
+	else if (N1 == 9)
 	{
 		/*Переставить элементы массива в обратном порядке*/
 
@@ -414,11 +414,11 @@ void main() {
 		int N = 0;
 
 		GenMassMalloc(mass, &N, -10, 10);
-		
+
 		int j = 0;
 		int z = N - 1;
 		int p = 0;
-		for (int i = 0; i < N/2; i++)
+		for (int i = 0; i < N / 2; i++)
 		{
 			p = *(mass + i);
 			*(mass + i) = *(mass + z);
@@ -487,7 +487,7 @@ void main() {
 	else if (N1 == 12)
 	{
 		/*Ввести в StringGrid массив из 10 целых чисел.Создать два новых массива – из четных и нечётных
-			элементов исходного массива.Определить, в каком массиве больше элементов.*/
+		элементов исходного массива.Определить, в каком массиве больше элементов.*/
 
 		int *mass = NULL;
 		int *chetMass = NULL;
